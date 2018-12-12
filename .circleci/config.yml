@@ -51,5 +51,5 @@ jobs:
       - run:
           name: Deploy app to Digital Ocean Server via Docker
           command: |
-            ssh -o StrictHostKeyChecking=no root@198.199.102.12 "/bin/bash ./deploy_app.sh $DOCKER_HUB_ACCOUNT/balcony-inspection-vents:$CIRCLE_SHA1"
+            ssh -o StrictHostKeyChecking=no root@104.131.135.148 "/bin/bash ./deploy_app.sh $DOCKER_HUB_ACCOUNT/balcony-inspection-vents:$CIRCLE_SHA1"
 
