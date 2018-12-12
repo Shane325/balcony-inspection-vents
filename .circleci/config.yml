@@ -1,0 +1,55 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    working_directory: ~/balcony-inspection-vents
+    docker:
+      # start with a docker image with git installed
+      - image: docker:17.05.0-ce-git
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build docker image
+          command: docker build -t balcony-inspection-vents .
+      - run:
+          name: Start docker container
+          command: docker run -d -p 80:8080 --name balcony-inspection-vents balcony-inspection-vents 
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # Deploy to docker hub
+      # TODO// Research versioning docker builds best practices.
+      - deploy:
+          name: Push image to docker hub
+          command: |
+            docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USR_ID -p $DOCKER_HUB_PWD
+            docker tag balcony-inspection-vents $DOCKER_HUB_ACCOUNT/balcony-inspection-vents:$CIRCLE_SHA1
+            docker tag balcony-inspection-vents $DOCKER_HUB_ACCOUNT/balcony-inspection-vents:latest
+            docker push $DOCKER_HUB_ACCOUNT/balcony-inspection-vents:$CIRCLE_SHA1
+            docker push $DOCKER_HUB_ACCOUNT/balcony-inspection-vents:latest
+
+      - run:
+          name: Deploy app to Digital Ocean Server via Docker
+          command: |
+            ssh -o StrictHostKeyChecking=no root@198.199.102.12 "/bin/bash ./deploy_app.sh $DOCKER_HUB_ACCOUNT/balcony-inspection-vents:$CIRCLE_SHA1"
+
