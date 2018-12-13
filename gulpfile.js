@@ -32,12 +32,56 @@ gulp.task('start', function () {
   })
 })
 
+// Copy third party libraries from /node_modules into /vendor
+gulp.task('vendor', function () {
+  // Bootstrap
+  gulp.src([
+    './node_modules/bootstrap/dist/**/*',
+    '!./node_modules/bootstrap/dist/css/bootstrap-grid*',
+    '!./node_modules/bootstrap/dist/css/bootstrap-reboot*'
+  ])
+    .pipe(gulp.dest('public/vendor/bootstrap'))
+
+    // Font Awesome
+  gulp.src([
+    './node_modules/@fortawesome/**/*'
+  ])
+    .pipe(gulp.dest('public/vendor'))
+
+    // jQuery
+  gulp.src([
+    './node_modules/jquery/dist/*',
+    '!./node_modules/jquery/dist/core.js'
+  ])
+    .pipe(gulp.dest('public/vendor/jquery'))
+
+    // jQuery Easing
+  gulp.src([
+    './node_modules/jquery.easing/*.js'
+  ])
+    .pipe(gulp.dest('public/vendor/jquery-easing'))
+
+    // Magnific Popup
+  gulp.src([
+    './node_modules/magnific-popup/dist/*'
+  ])
+    .pipe(gulp.dest('public/vendor/magnific-popup'))
+
+    // Scrollreveal
+  gulp.src([
+    './node_modules/scrollreveal/dist/*.js'
+  ])
+    .pipe(gulp.dest('public/vendor/scrollreveal'))
+})
+
 // Styles
 gulp.task('styles', function () {
   return gulp.src('public/css/**/*.css')
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest('public/dist/css'))
-    .pipe(rename({suffix: '.min'}))
+    .pipe(rename({
+      suffix: '.min'
+    }))
     .pipe(cssnano())
     .pipe(gulp.dest('public/dist/css'))
 })
@@ -45,33 +89,24 @@ gulp.task('styles', function () {
 // Scripts
 gulp.task('scripts', function () {
   return gulp.src(['public/js/**/*.js'])
-    .pipe(rename({suffix: '.min'}))
+    .pipe(rename({
+      suffix: '.min'
+    }))
     .pipe(uglify())
     .pipe(gulp.dest('public/dist/js'))
 })
 
-// Images
-gulp.task('images', function () {
-  return gulp.src('public/images/**/*')
-    .pipe(imagemin({
-      optimizationLevel: 3,
-      progressive: true,
-      interlaced: true
-    }))
-    .pipe(gulp.dest('public/dist/images'))
-})
-
 // Clean
 gulp.task('clean', function () {
-  return del(['public/dist/images', 'public/dist/fonts', 'public/dist'])
+  return del(['public/dist'])
 })
 
 // Run the project in production mode
 gulp.task('prod', function (done) {
-  runSequence('clean', ['styles', 'scripts', 'images'], 'start:prod', done)
+  runSequence('clean', ['vendor', 'styles', 'scripts'], 'start:prod', done)
 })
 
 // Run the project in development / default mode
 gulp.task('default', function (done) {
-  runSequence('clean', 'start', done)
+  runSequence('clean', 'vendor', 'start', done)
 })

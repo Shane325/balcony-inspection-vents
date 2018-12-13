@@ -22,10 +22,13 @@ let config = require('./config/config')
  * @returns - renders home page
  */
 module.exports.getHome = (req, res) => {
-  res.render('../views/pages/index')
+  res.render('../views/pages/index', {
+    css: config.lib.css,
+    js: config.lib.js
+  })
 }
 
-/** 
+/**
  * Send contact email
  *
  */
