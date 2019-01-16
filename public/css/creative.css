@@ -51,12 +51,16 @@ h6 {
   background-color: #212529 !important;
 }
 
+.bg-grey {
+  background-color: #F8F9FA !important;
+}
+
 .text-faded {
   color: rgba(255, 255, 255, 0.7);
 }
 
 section {
-  padding: 8rem 0;
+/*  padding: 8rem 0; */
 }
 
 .section-heading {
@@ -316,4 +320,36 @@ header.masthead p {
 .btn-primary:active, .btn-primary:focus {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
   box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
+}
+
+.showcase .showcase-text {
+  padding: 3rem;
+}
+
+.showcase .showcase-img {
+  min-height: 40rem;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.padding-top-80 {
+  padding-top: 80px;
+
+}
+
+.padding-bottom-80 {
+  padding-bottom: 80px;
 }

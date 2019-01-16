@@ -24,7 +24,8 @@ let config = require('./config/config')
 module.exports.getHome = (req, res) => {
   res.render('../views/pages/index', {
     css: config.lib.css,
-    js: config.lib.js
+    js: config.lib.js,
+    assets: config.assets
   })
 }
 
