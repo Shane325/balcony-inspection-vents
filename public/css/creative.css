@@ -34,6 +34,13 @@ a:hover {
   color: #f05f40;
 }
 
+.about p a {
+  color: #FFFFFF;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  text-decoration: underline;
+}
+
 h1,
 h2,
 h3,
@@ -202,7 +209,7 @@ header.masthead p {
 
 @media (min-width: 768px) {
   header.masthead p {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 }
 
