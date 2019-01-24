@@ -360,3 +360,24 @@ header.masthead p {
 .padding-bottom-80 {
   padding-bottom: 80px;
 }
+
+.padding-right-40 {
+  padding-right: 40px;
+}
+
+.padding-left-40 {
+  padding-left: 40px;
+}
+
+.sb-721 p {
+  text-align: justify;
+}
+
+.sb-721 .left-paragraph, .sb-721 .right-paragraph {
+  padding: 30px 70px 30px 70px;
+}
+
+.sb-721 .right-paragraph .bill-date {
+  color: #F05F40;
+}
+
