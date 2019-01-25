@@ -369,15 +369,19 @@ header.masthead p {
   padding-left: 40px;
 }
 
+.padding-top-40 {
+  padding-top: 40px;
+}
+
+.padding-bottom-40 {
+  padding-bottom: 40px;
+}
+
 .sb-721 p {
   text-align: justify;
 }
 
 .sb-721 .left-paragraph, .sb-721 .right-paragraph {
   padding: 30px 70px 30px 70px;
-}
-
-.sb-721 .right-paragraph .bill-date {
-  color: #F05F40;
 }
 
