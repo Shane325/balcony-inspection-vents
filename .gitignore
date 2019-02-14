@@ -1,3 +1,7 @@
 node_modules/
 public/dist/
 npm-debug.log
+dhparam/
+docker-compose.yml
+nginx-conf/
+ssl_renew.sh

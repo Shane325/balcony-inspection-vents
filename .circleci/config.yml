@@ -48,8 +48,3 @@ jobs:
             docker push $DOCKER_HUB_ACCOUNT/balcony-inspection-vents:$CIRCLE_SHA1
             docker push $DOCKER_HUB_ACCOUNT/balcony-inspection-vents:latest
 
-      - run:
-          name: Deploy app to Digital Ocean Server via Docker
-          command: |
-            ssh -o StrictHostKeyChecking=no root@104.131.135.148 "/bin/bash ./deploy_app.sh $DOCKER_HUB_ACCOUNT/balcony-inspection-vents:$CIRCLE_SHA1"
-
