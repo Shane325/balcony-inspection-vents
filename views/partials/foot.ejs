@@ -1,3 +1,22 @@
 <% js.forEach(function(src){ %>
     <script src="<%=src %>"></script>
     <% }) %>
+        <script src="http://malsup.github.com/jquery.form.js"></script>
+        <script>
+            // prepare the form when the DOM is ready 
+            $(document).ready(function()
+            {
+                var options = {
+                    target: '#output1', // target element(s) to be updated with server response 
+                    success: function()
+                    {
+                        alert('Thank you for your comment. We will get back to you shortly')
+                    }, // post-submit callback 
+                    clearForm: true, // clear all form fields after successful submit 
+                    resetForm: true // reset the form after successful submit 
+                };
+
+                // bind form using 'ajaxForm' 
+                $('#contactform').ajaxForm(options);
+            });
+        </script>
