@@ -418,3 +418,15 @@ header.masthead p {
   background-color: #f5f5f5;
   text-align: center;
 }
+
+@media (max-width: 991px) {
+  .header-btn-group .header-btn {
+    margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header-btn-group .header-btn {
+    margin-right: 25px;
+  }
+}

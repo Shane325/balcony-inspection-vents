@@ -47,6 +47,6 @@ module.exports.sendContactEmail = (req, res, next) => {
     }
 
     res.status(HttpStatus.OK)
-    res.send('ok')
+    res.json({ message: 'Form submitted successfully. We will get back to you shortly.' })
   })
 }
