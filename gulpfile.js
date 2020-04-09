@@ -42,32 +42,32 @@ gulp.task('vendor', function () {
   ])
     .pipe(gulp.dest('public/vendor/bootstrap'))
 
-    // Font Awesome
+  // Font Awesome
   gulp.src([
     './node_modules/@fortawesome/**/*'
   ])
     .pipe(gulp.dest('public/vendor'))
 
-    // jQuery
+  // jQuery
   gulp.src([
     './node_modules/jquery/dist/*',
     '!./node_modules/jquery/dist/core.js'
   ])
     .pipe(gulp.dest('public/vendor/jquery'))
 
-    // jQuery Easing
+  // jQuery Easing
   gulp.src([
     './node_modules/jquery.easing/*.js'
   ])
     .pipe(gulp.dest('public/vendor/jquery-easing'))
 
-    // Magnific Popup
+  // Magnific Popup
   gulp.src([
     './node_modules/magnific-popup/dist/*'
   ])
     .pipe(gulp.dest('public/vendor/magnific-popup'))
 
-    // Scrollreveal
+  // Scrollreveal
   gulp.src([
     './node_modules/scrollreveal/dist/*.js'
   ])
