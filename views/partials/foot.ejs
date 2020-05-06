@@ -23,7 +23,8 @@
                 // bind form using 'ajaxForm' 
                 $('#contactform').submit(function () {
                   $(this).ajaxSubmit(options)
-
+                    gtag_report_conversion();
+                    console.log('Button Pressed');
                   return false;
                 });
               }) 
