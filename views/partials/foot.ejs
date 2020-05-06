@@ -24,6 +24,7 @@
                 $('#contactform').submit(function () {
                   $(this).ajaxSubmit(options)
                     gtag_report_conversion();
+                    ga('send', 'event', 'Form', 'submit', 'old site');
                     console.log('Button Pressed');
                   return false;
                 });
